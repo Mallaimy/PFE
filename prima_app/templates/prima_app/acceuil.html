@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prima_BM_AP</title>
+    <!--Bootstrap css-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
+    </script>
+    <!--fontwosome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--Favicon -->
+    <link href={% static  "images/favicon.ico" %} rel="shortcut icon" >
+    <!--logo-->
+    <link rel="shortcut icon" href={% static  "images/logo.ico" %} rel="shortcut icon" >
+    <!-- css -->
+    <link href={% static  "css/style.css" %} rel="stylesheet" >
+
+</head>
+
+    <style>
+        body{
+            background: url("/static/css/images/welcom.jpg");
+            background-position: center 0px;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+    </style>
+
+<body>
+
+    <div class="wrapper">
+        <header>
+            <nav class="nav navbar-expand_lg fixed-top navbar-dark p-3" style="background-color: black;">
+                <div class="col-sm">
+                    <a class="navbar-brand flex-grow-1 text text-center"
+                        style="text-align:center; color:beige; margin-left: 25px;" href="">
+                        {% block nav-bar-content %}
+                        <i class="fas fa-briefcase-medical"></i>&nbsp;&nbsp; Prima_BM
+                        {% endblock nav-bar-content %}
+                    </a>
+                </div>
+                <div class="col-ms">
+                    {% block btn-nav %}
+                    <a id="btn-nav" class="btn btn-outline-info btn-sm border-light" href="{% url 'home' %}">login</a>
+                    {% endblock btn-nav %}
+
+                </div>
+            </nav>
+        </header>
+        {%  block content %}
+        <h3 style="color: rgb(211, 39, 145);">Bienvenu au systeme de Gestion de Prima_BM</h3>
+        <i class="fas fa-heartbeat" style="font-size: 400px; color: rgb(211, 39, 145);"></i>
+        {%  endblock content %}
+    </div>
+    <footer class="bg-dark text-center text-lg-start text-light" id="footer"> 
+        <div class="text-center p-3 " style="background-color: rgb(0, 0, 0, 0.2);">
+            Copyright &copy; {% now "Y" %} <span>All rignts resered</span> | Made with
+            <i class="text-danger fas fa-heartbeat" style="font-size: 15px"></i>
+            <a href=""></a>
+        </div>
+    </footer>
+
+    <!-- statci js -->
+    <script src={% static "js/script.js" %}></script>
+</body>
+
+</html> 

@@ -1,0 +1,31 @@
+{% extends 'prima_app/base.html'%}
+
+<!--crispy tag-->
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+<div class="container mt-5 pt-5 " style="width: 100%;">
+    <div class="card p-3 shadow-lg p-3 mb-5 bg-body rounded">
+        <form action="" , method="POST" autocomplete="off">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-4"> {{ form.num_res|as_crispy_field}} </div>
+                <div class="col-4"> {{ form.nom_pat|as_crispy_field}} </div>
+                <div class="col-4"> {{ form.nom_med|as_crispy_field}} </div>
+            </div>
+            <div class="row">
+                <div class="col-4"> {{ form.nom_serv|as_crispy_field}} </div>
+                <div class="col-4"> {{ form.data_res|as_crispy_field}} </div>
+                <div class="col-4"> {{ form.observation|as_crispy_field}} </div>
+            </div>
+            <hr>
+            <div class="d-grid gap-2 mt-2">
+                <button class="btn btn-primary" type="submit">Soumettre</button>
+                <a class="btn btn-secondary" href="{% url 'resultat-list' %}">Annuler</a>
+            </div>
+            <hr>
+        </form>
+    </div>
+</div>
+{% endblock content %}

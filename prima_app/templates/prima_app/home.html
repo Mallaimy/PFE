@@ -1,0 +1,12 @@
+{% extends 'prima_app/base.html' %}
+{% load static %}
+
+
+{% block btn-nav %}
+  <a id="btn-nav" class="btn btn-outline-danger btn-sm border-light" href="{% url 'logout' %}">logout</a> 
+ {% endblock btn-nav %}
+
+
+{%  block content %}
+  <img  style="height: 586px;" class="img-fluid rounded mx-auto d-block" src="{% static "/css/images/image_prima.jpg" %}" alt="image de Prima_BM">
+{%  endblock content %}

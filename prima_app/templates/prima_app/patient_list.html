@@ -1,0 +1,45 @@
+{%  extends 'prima_app/base.html' %}
+
+{%  block content %}
+
+<div class="container mt-5">
+    <a class="btn btn-outline-primary mb-3 mt-5" href="{% url 'patient-create' %}">
+        <i class="fas fas-plus"></i>&nbsp;&nbsp; Patient
+    </a>
+    <table class="table table-borderd", style="text-align: center; font-size: 14px;" >
+        <thead class="table-primary"> 
+            <tr>
+                <th style="width: 20%;">Nom</th>
+                <th style="width: 25%;">Prenom</th>
+                <th style="width: 7%;">Genre</th>
+                <th style="width: 10%;">Age</th>
+                <th style="width: 25%;">Date</th>
+                <th style="width: 5%;">groupe_sangin</th>
+                <th style="width: 10%;">Operations</th>
+                <th style="width: 10%;"></th>
+            </tr>
+        </thead>
+        {% for patient in object_list %}
+        <tr>
+            <td>{{ patient.nom }}</td>
+            <td>{{ patient.prenom }}</td>
+            <td>{{ patient.genre }}</td>
+            <td>{{ patient.Age }}</td>
+            <td>{{ patient.date }}</td>
+            <td>{{ patient.groupe_sangin}}</td>
+            <td>
+                <a  class="btn btn-primary btn-sm" style="width: 45px;" href="{% url 'patient-update' pk=patient.id %}">
+                    <i class="fas fa-pen"></i>
+                </a>
+            </td>
+            <td>
+                <a  class="btn btn-danger btn-sm" style="width: 45px;" href="{% url 'patient-delete' pk=patient.id %}">
+                    <i class="fas fa-trash-alt"></i>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{%  endblock content %}

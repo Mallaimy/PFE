@@ -1,0 +1,42 @@
+{% extends 'prima_app/base.html' %}
+
+{%  block content %}
+<div class="container mt-5">
+    <a class="btn btn-outline-primary mb-3 mt-5" href="{% url 'rv-create' %}">
+        <i class="fas fas-plus"></i>&nbsp;&nbsp; prendre un RV
+    </a>
+    <table class="table table-borderd", style="text-align: center; font-size: 14px;" >
+        <thead class="table-primary"> 
+            <tr>
+                <th style="width: 20%;">Patient</th>
+                <th style="width: 25%;">Medecin</th>
+                <th style="width: 7%;">Date/Heure</th>
+                <th style="width: 10%;">Description</th>
+                <th style="width: 25%;">staut</th>
+                <th style="width: 25%;"></th>
+                <th style="width: 25%;"></th>
+            </tr>
+        </thead>
+        {% for rv in object_list %}
+        <tr>
+            <td>{{ rv.nom_pat }}</td>
+            <td>{{ rv.nom_med }}</td>
+            <td>{{ rv.date_rv }}</td>
+            <td>{{ rv.description}}</td>
+            <td>{{ rv.status }}</td>
+            <td>
+                <a  class="btn btn-primary btn-sm" style="width: 45px;" href="{% url 'rv-update' pk=rv.id %}">
+                    <i class="fas fa-pen"></i>
+                </a>
+            </td>
+            <td>
+                <a  class="btn btn-danger btn-sm" style="width: 45px;" href="{% url 'rv-delete' pk=rv.id %}">
+                    <i class="fas fa-trash-alt"></i>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{%  endblock content %}

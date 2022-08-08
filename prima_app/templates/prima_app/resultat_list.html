@@ -1,0 +1,44 @@
+{% extends 'prima_app/base.html' %}
+
+{%  block content %}
+<div class="container mt-5">
+    <a class="btn btn-outline-primary mb-3 mt-5" href="{% url 'resultat-create' %}">
+        <i class="fas fas-plus"></i>&nbsp;&nbsp; Ajouter Res
+    </a>
+    <table class="table table-borderd", style="text-align: center; font-size: 14px;" >
+        <thead class="table-primary"> 
+            <tr>
+                <th style="width: 20%;">Num</th>
+                <th style="width: 25%;">Patient</th>
+                <th style="width: 7%;">Medecin</th>
+                <th style="width: 10%;">Service</th>
+                <th style="width: 25%;">Date</th>
+                <th style="width: 25%;">observations</th>
+                <th style="width: 25%;"></th>
+                <th style="width: 25%;"></th>
+            </tr>
+        </thead>
+        {% for res in object_list %}
+        <tr>
+            <td>{{ res.num_res}}</td>
+            <td>{{ res.nom_pat }}</td>
+            <td>{{ res.nom_med }}</td>
+            <td>{{ res.nom_serv }}</td>
+            <td>{{ res.data_res }}</td>
+            <td>{{ res.observation}}</td>
+            <td>
+                <a  class="btn btn-primary btn-sm" style="width: 45px;" href="{% url 'resultat-update' pk=res.id %}">
+                    <i class="fas fa-pen"></i>
+                </a>
+            </td>
+            <td>
+                <a  class="btn btn-danger btn-sm" style="width: 45px;" href="{% url 'resultat-delete' pk=res.id %}">
+                    <i class="fas fa-trash-alt"></i>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{%  endblock content %}

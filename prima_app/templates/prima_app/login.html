@@ -1,0 +1,44 @@
+{% extends 'prima_app/acceuil.html' %}
+
+{% block nav-bar-content %}
+<i class="fas fa-stethoscope"></i>&nbsp;&nbsp; login
+{% endblock nav-bar-content %}
+
+
+{% block btn-nav %}
+<a id="btn-nav" class="btn btn-outline-info btn-sm border-light" href="{% url 'acceuil' %}">Retour</a>
+{% endblock btn-nav %}
+
+
+{%  block content %}
+
+{% load crispy_forms_tags %}
+
+<div class="container">
+    <div class="card p-3 mt-5 boder-dark">
+        <span class="btn btn-outline-dark mt-3 "> <i class="fas fa-user-lock"></i> &nbsp;&nbsp; Accés Restrain</span>
+        <form  method="POST" action="{% url 'login' %}"  >
+            {% csrf_token %}
+            <div class="input-group mt-3 ">
+                <span class="input-group-text" ><i class="fas fa-user-alt"></i></span>
+                {{ form.username | as_crispy_field}}
+                <!-- <input type="text" class="form-control" name='username' placeholder="Username"> -->
+            </div>
+            <div class="input-group mt-5 ">
+                <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                {{ form.password|as_crispy_field }}
+                <!-- <input type="password" class="form-control" name='Password' placeholder="password"> -->
+            </div>
+            <input  class="btn btn-primary btn-sm mt-4 mb-3" type="submit" value="Entrer" id="btn-enter" >
+        </form>
+    </div>
+
+    {% if form.errors %}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        swal( "Attention !!!", "Vos indentifiants ne sont pas correct", "error")
+    </script>
+    {% endif %}
+
+</div>
+{%  endblock content %}

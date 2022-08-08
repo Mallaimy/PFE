@@ -1,0 +1,41 @@
+{% extends 'prima_app/rendezvous_list.html' %}
+
+<!--navbar bg-->
+{% block navbar %}bg-danger{% endblock navbar %}
+<!--navbar content-->
+{% block nav-content %}
+    <i class="fas-fas-user-times"></i>&nbsp;&nbsp; SUPPRIMER RENDEZ-VOUS
+{% endblock nav-content %}
+
+<!--navbar footer-->
+{% block footer %}
+    style = "color: #ff7f7f;"
+{% endblock footer %}
+
+<!--page content-->
+{% block content %}
+    <br>
+    <div class="container mt-5" style="width: 450px;">
+        <div class="card p-3 border-dark">
+            <h6 class="modal-title">
+                <i class="fas fa-trash-alt"></i>&nbsp;&nbsp; Supprimer rendez-vous
+            </h6>
+            <hr>
+            <div class="text-center text-danger">
+                <i class="far fa-times-circle fa-5x mb-4 mt-2"></i>
+            </div>
+            <div class="text-center text-danger">
+                <span> VOUEZ VOUS VRAIMENT SUPPERMER CE RENDEZ-VOUS ?</span>
+                <div class="text-dark mt-3 mb-2">PATIENT: <strong>{{rv.nom_pat}}</strong></div>
+            </div>
+            <hr>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <input  class="btn btn-outline-danger btn-sm ms-2" type="submit" value="Supprimer" style="float:right;">
+                <a href="{% url 'rv-list' %}" class="btn btn-secondary btn-ms" style="float: right;">Annuler</a>
+            </form>
+        </div>
+        <br><hr>
+        <span class="text-danger "> Attention vous ne pouvez plus recuperer ce donneés !!!</span>
+    </div>
+{% endblock content %}
